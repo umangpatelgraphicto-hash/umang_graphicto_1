@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff; /* White background for the track */
+  border-radius: 10px; /* Rounded track corners */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cccccc; /* Gray thumb color */
+  border-radius: 10px; /* Rounded thumb */
+  border: 2px solid #ffffff; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888888; 
+}
+
+
+@layer components {
+  .scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #cccccc #ffffff;
+  }
+}
+
+/* styles/globals.css */
+@font-face {
+  font-family: 'Nexa Bold';
+  src: url('/fonts/Nexa-Bold.woff2') format('woff2'),
+       url('/fonts/Nexa-Bold.woff') format('woff');
+  font-weight: 400; /* Adjust if needed */
+  font-style: normal;
+  font-display: swap; /* Ensures text is visible while the font loads */
+}
+
+@media (min-width: 2560px) {
+  .responsive-container {
+    margin-left: 550px;
+  }
+}

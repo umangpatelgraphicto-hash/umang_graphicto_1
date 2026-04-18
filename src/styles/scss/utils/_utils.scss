@@ -1,0 +1,150 @@
+/* Mixin for container widths */
+@mixin container-width($breakpoints) {
+  @each $breakpoint, $width in $breakpoints {
+    @media (min-width: $breakpoint) {
+      .container {
+        max-width: $width;
+      }
+    }
+  }
+}
+
+/* Mixin for column widths */
+@mixin column-widths($breakpoints, $columns: 12) {
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      flex: 0 0 calc((100% / #{$columns}) * #{$i} - 30px);
+      max-width: calc((100% / #{$columns}) * #{$i} - 30px);
+      margin: 0 15px;
+    }
+  }
+
+  @each $breakpoint, $suffix in $breakpoints {
+    @for $i from 1 through $columns {
+      @media (min-width: $breakpoint) {
+        .col-#{$suffix}-#{$i} {
+          flex: 0 0 calc((100% / #{$columns}) * #{$i} - 30px);
+          max-width: calc((100% / #{$columns}) * #{$i} - 30px);
+          margin: 0 15px;
+        }
+      }
+    }
+  }
+}
+
+/* Container */
+.container {
+  width: calc(100% - 30px);
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@include container-width(
+  (
+    576px: 540px,
+    768px: 720px,
+    992px: 960px,
+    1200px: 1140px,
+    1400px: 1320px,
+  )
+);
+
+/* Row */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  row-gap: 30px;
+}
+
+/* Columns */
+.col {
+  display: flex;
+}
+
+@include column-widths(
+  (
+    576px: 'sm',
+    768px: 'md',
+    992px: 'lg',
+    1200px: 'xl',
+    1400px: 'xxl',
+  )
+);
+
+// Display
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-none {
+  display: none !important;
+}
+
+// Flex
+.justify-content-center {
+  justify-content: center !important;
+}
+.justify-content-start {
+  justify-content: flex-start !important;
+}
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+.align-items-start {
+  align-items: flex-start !important;
+}
+.align-items-end {
+  align-items: flex-end !important;
+}
+
+// Text Postion
+.text-start {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-end {
+  text-align: right !important;
+}
+
+// margin
+.ms-auto {
+  margin-left: auto !important;
+}
+.me-auto {
+  margin-right: auto !important;
+}
+.mt-30 {
+  margin-top: 30px;
+}
+
+// position
+.position-relative {
+  position: relative !important;
+}
+
+// overflow
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+
+// Utils
+.min-height-unset {
+  min-height: unset !important;
+}
